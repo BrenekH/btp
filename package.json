@@ -23,5 +23,14 @@
     "url": "https://github.com/BrenekH/btp/issues"
   },
   "homepage": "https://github.com/BrenekH/btp#readme",
-  "keywords": ["cli", "beryl", "plugin", "packager"]
+  "keywords": [
+    "cli",
+    "beryl",
+    "plugin",
+    "packager"
+  ],
+  "dependencies": {
+    "commander": "^7.2.0",
+    "ignore": "^5.1.8"
+  }
 }
