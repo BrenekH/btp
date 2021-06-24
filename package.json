@@ -2,9 +2,16 @@
   "name": "btp",
   "version": "0.0.1-alpha.1",
   "description": "Command line utility for packaging Beryl plugins.",
-  "main": "dist/main.js",
+  "main": "bin/main.js",
   "scripts": {
+    "build": "tsc -p .",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "typescript": "^4.3.4"
+  },
+  "bin": {
+    "btp": "./bin/main.js"
   },
   "repository": {
     "type": "git",
