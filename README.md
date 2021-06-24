@@ -1,4 +1,4 @@
-# BTP
+# BerylTimerPlugins
 
 Official plugin packager for the [Beryl timer](https://github.com/BrenekH/beryl#readme).
 
