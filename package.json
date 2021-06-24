@@ -3,12 +3,19 @@
   "version": "0.0.1-alpha.1",
   "description": "Command line utility for packaging Beryl plugins.",
   "main": "bin/main.js",
+  "typings": "bin/main.d.ts",
   "scripts": {
     "build": "tsc -p .",
     "test": "echo \"no test specified\""
   },
+  "dependencies": {
+    "commander": "^7.2.0",
+    "ignore": "^5.1.8",
+    "yazl": "^2.5.1"
+  },
   "devDependencies": {
     "@types/node": "^15.12.4",
+    "@types/yazl": "^2.4.2",
     "typescript": "^4.3.4"
   },
   "bin": {
@@ -29,9 +36,5 @@
     "beryl",
     "plugin",
     "packager"
-  ],
-  "dependencies": {
-    "commander": "^7.2.0",
-    "ignore": "^5.1.8"
-  }
+  ]
 }

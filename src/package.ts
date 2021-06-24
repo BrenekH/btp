@@ -1,11 +1,27 @@
-import { readdirSync, readFileSync, statSync } from "fs"
+import { createWriteStream, readdirSync, readFileSync, statSync } from "fs"
 import ignore from "ignore"
 import { join } from "path"
+import { resolve } from "path/posix"
+import yazl from "yazl"
 
 export function packageBIPA() {
-	const filesToAdd = ignore().add(readFileSync("./.berylignore").toString()).filter(getAllFiles("."))
+	const outputFilename = "output.bipa" // TODO: Auto-generate a more descriptive filename
 
-	console.log(filesToAdd)
+	const filesToAdd = ignore()
+		.add(readFileSync("./.berylignore").toString())
+		.add(outputFilename) // Ignore our output file, even if it isn't ignored in .berylignore
+		.filter(getAllFiles("."))
+
+	const zip = new yazl.ZipFile()
+	filesToAdd.forEach((filename) => {
+		zip.addFile(resolve(".", filename), filename)
+	})
+
+	zip.outputStream.pipe(createWriteStream(outputFilename)).on("close", function() {
+		console.log(`Successfully wrote ${outputFilename}`)
+	});
+
+	zip.end()
 }
 
 function getAllFiles(dirPath: string, passedArrayOfFiles?: string[]): string[] {
