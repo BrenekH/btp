@@ -4,8 +4,14 @@ import { join } from "path"
 import { resolve } from "path/posix"
 import yazl from "yazl"
 
+interface IPackageJSON {
+	name: string,
+	version: string,
+}
+
 export function packageBIPA() {
-	const outputFilename = "output.bipa" // TODO: Auto-generate a more descriptive filename
+	const pkgJsonContents = readFileSync("./package.json")
+	const outputFilename = generateOutputFilename(pkgJsonContents.toString())
 
 	const filesToAdd = ignore()
 		.add(readFileSync("./.berylignore").toString())
@@ -22,6 +28,18 @@ export function packageBIPA() {
 	});
 
 	zip.end()
+}
+
+function generateOutputFilename(packageJSONString: string): string {
+	let pkgJSON: IPackageJSON
+	try {
+		pkgJSON = JSON.parse(packageJSONString)
+	} catch (e: any) {
+		console.warn(e)
+		return "output.bipa"
+	}
+
+	return `${pkgJSON.name}-${pkgJSON.version}.bipa`
 }
 
 function getAllFiles(dirPath: string, passedArrayOfFiles?: string[]): string[] {
