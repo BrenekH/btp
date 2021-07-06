@@ -1,6 +1,6 @@
 {
   "name": "btp",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1",
   "description": "Command line utility for packaging Beryl plugins.",
   "main": "bin/main.js",
   "typings": "bin/main.d.ts",
