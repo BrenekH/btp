@@ -1,6 +1,6 @@
 {
   "name": "btp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Command line utility for packaging Beryl plugins.",
   "main": "bin/main.js",
   "typings": "bin/main.d.ts",
@@ -26,7 +26,7 @@
     "url": "git+https://github.com/BrenekH/btp.git"
   },
   "author": "Brenek Harrison",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/BrenekH/btp/issues"
   },
